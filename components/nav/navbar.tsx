@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { VertexLogo } from "@/components/brand/logo";
 import { Bell } from "lucide-react";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 
 export interface NavItem {
   label: string;
@@ -24,8 +25,6 @@ export function Navbar({
     { label: "My Learning", href: "/my-learning", isActive: false },
   ],
   showActions = false,
-  avatarSrc = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80",
-  avatarAlt = "User avatar",
   rightContent,
   className,
   ...props
@@ -65,23 +64,41 @@ export function Navbar({
       {rightContent ? (
         rightContent
       ) : showActions ? (
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            aria-label="Notifications"
-          >
-            <Bell className="w-5 h-5" strokeWidth={1.8} />
-          </button>
-
-          <div className="w-9 h-9 rounded-full overflow-hidden border border-neutral-200 shadow-2xs">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={avatarSrc}
-              alt={avatarAlt}
-              className="w-full h-full object-cover"
+        <div className="flex items-center gap-3">
+          <Show when="signed-out">
+            <SignInButton mode="modal">
+              <button
+                type="button"
+                className="text-sm font-sans font-medium text-neutral-700 hover:text-neutral-900 px-3 py-1.5 rounded-lg hover:bg-neutral-100 transition-colors select-none cursor-pointer"
+              >
+                Sign In
+              </button>
+            </SignInButton>
+            <SignUpButton mode="modal">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center font-medium font-sans h-9 px-4 text-xs sm:text-sm rounded-[10px] bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-600 transition-colors shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 select-none cursor-pointer"
+              >
+                Sign Up
+              </button>
+            </SignUpButton>
+          </Show>
+          <Show when="signed-in">
+            <button
+              type="button"
+              className="w-9 h-9 flex items-center justify-center rounded-full text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 cursor-pointer"
+              aria-label="Notifications"
+            >
+              <Bell className="w-5 h-5" strokeWidth={1.8} />
+            </button>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-9 h-9 border border-neutral-200 shadow-2xs",
+                },
+              }}
             />
-          </div>
+          </Show>
         </div>
       ) : null}
     </nav>

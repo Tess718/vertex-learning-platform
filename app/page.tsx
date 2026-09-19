@@ -19,7 +19,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] bg-[repeating-linear-gradient(-45deg,rgba(249,115,22,0.025)_0,rgba(249,115,22,0.025)_1px,transparent_0,transparent_10px)] text-neutral-900 selection:bg-primary-100 selection:text-primary-600">
       {/* Top Header */}
       <header className="w-full border-b border-neutral-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <Navbar
             items={[
               { label: "Courses", href: "/courses", isActive: false },
@@ -70,7 +70,7 @@ export default function HomePage() {
         <div className="w-full border-t border-neutral-200" />
 
         {/* All Courses Section */}
-        <section className="w-full max-w-6xl mx-auto px-6 lg:px-12 pt-12 pb-6">
+        <section className="w-full max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-6">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-display font-bold text-2xl text-neutral-900">
               All Courses
