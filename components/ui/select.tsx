@@ -19,7 +19,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className={cn("relative flex items-center w-full", className)}>
         <select
           ref={ref}
-          className="w-full h-[44px] pl-4 pr-10 text-sm font-sans text-neutral-900 bg-white border border-neutral-200 rounded-md appearance-none transition-colors focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 cursor-pointer"
+          className="w-full h-[44px] pl-4 pr-10 text-sm font-sans text-neutral-900 bg-white border border-neutral-200 rounded-[12px] appearance-none transition-colors focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400 cursor-pointer"
           {...props}
         >
           {options.map((option) => (

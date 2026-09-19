@@ -89,11 +89,11 @@ export default function DesignSystemPage() {
   ];
 
   const radiusScale = [
-    { label: "4px", sub: "(xs)", radiusClass: "rounded-xs" },
-    { label: "8px", sub: "(sm)", radiusClass: "rounded-sm" },
-    { label: "12px", sub: "(md)", radiusClass: "rounded-md" },
-    { label: "16px", sub: "(lg)", radiusClass: "rounded-lg" },
-    { label: "24px", sub: "(xl)", radiusClass: "rounded-xl" },
+    { label: "4px", sub: "(xs)", radiusClass: "rounded-[4px]" },
+    { label: "8px", sub: "(sm)", radiusClass: "rounded-[8px]" },
+    { label: "12px", sub: "(md)", radiusClass: "rounded-[12px]" },
+    { label: "16px", sub: "(lg)", radiusClass: "rounded-[16px]" },
+    { label: "24px", sub: "(xl)", radiusClass: "rounded-[24px]" },
     { label: "Full", sub: "(circle)", radiusClass: "rounded-full" },
   ];
 
@@ -324,7 +324,7 @@ export default function DesignSystemPage() {
                 {radiusScale.map((r) => (
                   <div key={r.label} className="flex flex-col items-center gap-2">
                     <div
-                      className={`w-12 h-12 border border-neutral-300 bg-white ${r.radiusClass}`}
+                      className={`w-16 h-16 border border-neutral-300 bg-white ${r.radiusClass}`}
                     />
                     <div className="text-center">
                       <div className="text-xs font-medium text-neutral-900">{r.label}</div>
