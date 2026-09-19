@@ -2,7 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/nav/navbar";
-import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/cards/course-card";
 import { NextjsIcon, DockerIcon, TypeScriptIcon } from "@/components/brand/course-icons";
 import { HeroSearch } from "@/components/home/hero-search";
@@ -53,16 +52,12 @@ export default function HomePage() {
 
             {/* CTA Button */}
             <div className="mb-10">
-              <Link href="/courses">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="px-6 h-12 text-sm shadow-md gap-2"
-                  icon={<ArrowRight className="w-4 h-4" strokeWidth={2.5} />}
-                  iconPosition="right"
-                >
-                  Explore Courses
-                </Button>
+              <Link
+                href="/courses"
+                className="inline-flex items-center justify-center font-medium font-sans h-12 px-6 text-sm rounded-[12px] bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-600 shadow-md gap-2 transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+              >
+                <span>Explore Courses</span>
+                <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
               </Link>
             </div>
 
