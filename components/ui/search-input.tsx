@@ -35,7 +35,7 @@ export const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
           ref={ref}
           type="text"
           placeholder={placeholder}
-          className="w-full h-[44px] pl-11 pr-14 text-sm font-sans text-neutral-900 placeholder:text-neutral-500 bg-white border border-neutral-200 rounded-md transition-colors focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
+          className="w-full h-[44px] pl-11 pr-14 text-sm font-sans text-neutral-900 placeholder:text-neutral-500 bg-white border border-neutral-200 rounded-[12px] transition-colors focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
           {...props}
         />
         {showShortcut && (

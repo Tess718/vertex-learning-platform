@@ -1,69 +1,148 @@
-import Image from "next/image";
+import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Navbar } from "@/components/nav/navbar";
+import { Button } from "@/components/ui/button";
+import { CourseCard } from "@/components/cards/course-card";
+import { NextjsIcon, DockerIcon, TypeScriptIcon } from "@/components/brand/course-icons";
+import { HeroSearch } from "@/components/home/hero-search";
+import { GradientBars } from "@/components/home/gradient-bars";
+import { ArrowRight, Star } from "lucide-react";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Vertex — Search your learning in plain English",
+  description:
+    "Vertex understands what you want to learn and finds the exact lessons across all your courses with AI-powered search.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex flex-col bg-[#FAFAFC] bg-[repeating-linear-gradient(-45deg,rgba(249,115,22,0.025)_0,rgba(249,115,22,0.025)_1px,transparent_0,transparent_10px)] text-neutral-900 selection:bg-primary-100 selection:text-primary-600">
+      {/* Top Header */}
+      <header className="w-full border-b border-neutral-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <Navbar
+            items={[
+              { label: "Courses", href: "/courses", isActive: false },
+              { label: "My Learning", href: "/my-learning", isActive: false },
+            ]}
+            showActions={true}
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+      </header>
+
+      {/* Main Content Area with white canvas */}
+      <div className="w-full flex-1 flex flex-col items-center bg-white/85 backdrop-blur-xs">
+        {/* Hero Section */}
+        <section className="w-full pt-16 md:pt-20 pb-12 px-6 text-center">
+          <div className="max-w-4xl mx-auto flex flex-col items-center">
+            {/* Badge */}
+            <div className="inline-flex items-center justify-center font-sans uppercase font-semibold text-xs tracking-wider px-3.5 py-1 rounded-md bg-[#FFEEE5] text-primary-500 border border-[#FED7AA] mb-8 select-none">
+              INTELLIGENT LEARNING
+            </div>
+
+            {/* Headline */}
+            <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-[60px] text-neutral-900 tracking-tight leading-[1.12] mb-5">
+              Search your learning<br />in plain English.
+            </h1>
+
+            {/* Subtitle */}
+            <p className="font-sans text-neutral-500 text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-8">
+              Vertex understands what you want to learn and finds the exact lessons across all your courses.
+            </p>
+
+            {/* CTA Button */}
+            <div className="mb-10">
+              <Link href="/courses">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="px-6 h-12 text-sm shadow-md gap-2"
+                  icon={<ArrowRight className="w-4 h-4" strokeWidth={2.5} />}
+                  iconPosition="right"
+                >
+                  Explore Courses
+                </Button>
+              </Link>
+            </div>
+
+            {/* Search Input Bar */}
+            <HeroSearch />
+          </div>
+        </section>
+
+        {/* Section Divider */}
+        <div className="w-full border-t border-neutral-200" />
+
+        {/* All Courses Section */}
+        <section className="w-full max-w-6xl mx-auto px-6 lg:px-12 pt-12 pb-6">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="font-display font-bold text-2xl text-neutral-900">
+              All Courses
+            </h2>
+            <Link
+              href="/courses"
+              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-primary-500 hover:text-primary-600 transition-colors group"
+            >
+              <span>View all courses</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <CourseCard
+              title="Next.js for Production"
+              description="Build scalable, high-performance web applications with Next.js."
+              level="Intermediate"
+              duration="18h 24m"
+              modulesCount={12}
+              icon={<NextjsIcon className="w-14 h-14" />}
+              layout="stacked"
+              titleFont="display"
+              href="/courses/nextjs-for-production"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+            <CourseCard
+              title="Docker Essentials"
+              description="Containerize applications and streamline your development workflow."
+              level="Beginner"
+              duration="10h 12m"
+              modulesCount={8}
+              icon={<DockerIcon className="w-14 h-14" />}
+              layout="stacked"
+              titleFont="display"
+              href="/courses/docker-essentials"
+            />
+
+            <CourseCard
+              title="TypeScript Deep Dive"
+              description="Go beyond the basics and write safer, more expressive code."
+              level="Intermediate"
+              duration="14h 36m"
+              modulesCount={10}
+              icon={<TypeScriptIcon className="w-14 h-14" />}
+              layout="stacked"
+              titleFont="display"
+              href="/courses/typescript-deep-dive"
+            />
+          </div>
+
+          {/* New Courses Added Banner */}
+          <div className="flex items-center justify-center gap-4 mt-12 text-center">
+            <div className="h-px bg-neutral-200 flex-1 max-w-xs" />
+            <div className="flex items-center gap-2 text-neutral-700 text-sm font-sans font-medium select-none">
+              <Star className="w-4 h-4 text-primary-500 fill-transparent" strokeWidth={2} />
+              <span>New courses and lessons added every week.</span>
+            </div>
+            <div className="h-px bg-neutral-200 flex-1 max-w-xs" />
+          </div>
+        </section>
+
+        {/* Bottom Decorative Skyline Graphic */}
+        <div className="w-full">
+          <GradientBars />
         </div>
-      </main>
+      </div>
     </div>
   );
 }
